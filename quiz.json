@@ -56,6 +56,39 @@
                 2,
                 1
             ]
+        },
+        {
+            "type": "texte_cache",
+            "question": "Complète le nom du langage :",
+            "texte": "P _ T H O N",
+            "bonne_reponse": "Y"
+        },
+        {
+            "type": "logo",
+            "image": "assets/images/microsoft.jpg",
+            "bonne_reponse": "Microsoft"
+        },
+        {
+            "type": "association",
+            "question": "Associe chaque langage à son domaine.",
+            "gauche": [
+                "HTML",
+                "Python",
+                "SQL",
+                "CSS"
+            ],
+            "droite": [
+                "Base de données",
+                "Mise en forme",
+                "Structure d'une page web",
+                "Programmation"
+            ],
+            "associations": {
+                "A": 3,
+                "B": 4,
+                "C": 1,
+                "D": 2
+            }
         }
     ]
 }

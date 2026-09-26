@@ -7,6 +7,9 @@ from generator.questions.image import creer_question_image
 from generator.questions.rebus import creer_question_rebus
 from generator.questions.intrus import creer_question_intrus
 from generator.questions.classement import creer_question_classement
+from generator.questions.texte_cache import creer_question_texte_cache
+from generator.questions.logo import creer_question_logo
+from generator.questions.association import creer_question_association
 
 from generator.video import assembler_scenes
 from generator.config import (
@@ -25,7 +28,10 @@ GENERATEURS = {
     "image": creer_question_image,
     "rebus": creer_question_rebus,
     "intrus": creer_question_intrus,
-    "classement": creer_question_classement
+    "classement": creer_question_classement,
+    "texte_cache": creer_question_texte_cache,
+    "logo": creer_question_logo,
+    "association": creer_question_association
 }
 
 

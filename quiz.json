@@ -1,0 +1,61 @@
+{
+    "titre": "Quiz informatique",
+    "questions": [
+        {
+            "type": "qcm",
+            "question": "Quel protocole attribue automatiquement une adresse IP ?",
+            "reponses": [
+                "DNS",
+                "DHCP",
+                "ARP",
+                "FTP"
+            ],
+            "bonne_reponse": 1
+        },
+        {
+            "type": "vrai_faux",
+            "question": "Le protocole DNS permet de résoudre les noms de domaine.",
+            "bonne_reponse": true
+        },
+        {
+            "type": "image",
+            "image": "assets/images/souris.png",
+            "bonne_reponse": "C'est une souris!"
+        },
+        {
+            "type": "rebus",
+            "images": [
+                "assets/rebus/chat.jpg",
+                "assets/rebus/pot.jpg"
+            ],
+            "bonne_reponse": "Chapeau"
+        },
+        {
+            "type": "intrus",
+            "question": "Quel élément est l'intrus ?",
+            "elements": [
+                "Chat",
+                "Chien",
+                "Souris",
+                "Pomme"
+            ],
+            "intrus": 3
+        },
+        {
+            "type": "classement",
+            "question": "Classe ces animaux du plus petit au plus grand.",
+            "elements": [
+                "Papillon",
+                "Éléphant",
+                "Chien",
+                "Fourmi"
+            ],
+            "ordre_correct": [
+                3,
+                0,
+                2,
+                1
+            ]
+        }
+    ]
+}

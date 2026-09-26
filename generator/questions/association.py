@@ -143,6 +143,60 @@ def creer_question_association(
         y_gauche = y_depart + index_gauche * espace
         y_droite = y_depart + index_droite * espace
 
+        # Fond vert à gauche
+        fond_gauche = ColorClip(
+            size=(largeur, hauteur),
+            color=(30, 140, 70),
+            duration=QUESTION_DURATION - COUNTDOWN_DURATION
+        ).with_position(
+            (x_gauche, y_gauche)
+        ).with_start(COUNTDOWN_DURATION)
+
+        # Fond vert à droite
+        fond_droite = ColorClip(
+            size=(largeur, hauteur),
+            color=(30, 140, 70),
+            duration=QUESTION_DURATION - COUNTDOWN_DURATION
+        ).with_position(
+            (x_droite, y_droite)
+        ).with_start(COUNTDOWN_DURATION)
+
+        elements.append(fond_gauche)
+        elements.append(fond_droite)
+
+        # Texte gauche remis au-dessus du fond vert
+        texte_gauche = TextClip(
+            text=f"{lettre}. {gauche[index_gauche]}",
+            font=font,
+            font_size=40,
+            color="white",
+            size=(largeur - 40, hauteur - 20),
+            method="caption",
+            text_align="center",
+            vertical_align="center",
+            duration=QUESTION_DURATION - COUNTDOWN_DURATION
+        ).with_position(
+            (x_gauche + 20, y_gauche + 10)
+        ).with_start(COUNTDOWN_DURATION)
+
+        # Texte droite remis au-dessus du fond vert
+        texte_droite = TextClip(
+            text=f"{numero_droite}. {droite[index_droite]}",
+            font=font,
+            font_size=40,
+            color="white",
+            size=(largeur - 40, hauteur - 20),
+            method="caption",
+            text_align="center",
+            vertical_align="center",
+            duration=QUESTION_DURATION - COUNTDOWN_DURATION
+        ).with_position(
+            (x_droite + 20, y_droite + 10)
+        ).with_start(COUNTDOWN_DURATION)
+
+        elements.append(texte_gauche)
+        elements.append(texte_droite)
+
         # Ligne de liaison
         ligne = ColorClip(
             size=(460, 8),
@@ -156,28 +210,6 @@ def creer_question_association(
         ).with_start(COUNTDOWN_DURATION)
 
         elements.append(ligne)
-
-        # Mise en évidence à gauche
-        fond_gauche = ColorClip(
-            size=(largeur, hauteur),
-            color=(30, 140, 70),
-            duration=QUESTION_DURATION - COUNTDOWN_DURATION
-        ).with_position(
-            (x_gauche, y_gauche)
-        ).with_start(COUNTDOWN_DURATION)
-
-        elements.append(fond_gauche)
-
-        # Mise en évidence à droite
-        fond_droite = ColorClip(
-            size=(largeur, hauteur),
-            color=(30, 140, 70),
-            duration=QUESTION_DURATION - COUNTDOWN_DURATION
-        ).with_position(
-            (x_droite, y_droite)
-        ).with_start(COUNTDOWN_DURATION)
-
-        elements.append(fond_droite)
 
     elements.extend(compteurs)
 

@@ -10,6 +10,8 @@ from generator.questions.classement import creer_question_classement
 from generator.questions.texte_cache import creer_question_texte_cache
 from generator.questions.logo import creer_question_logo
 from generator.questions.association import creer_question_association
+from generator.questions.calcul import creer_question_calcul
+from generator.questions.completer import creer_question_completer
 
 from generator.video import assembler_scenes
 from generator.config import (
@@ -31,7 +33,9 @@ GENERATEURS = {
     "classement": creer_question_classement,
     "texte_cache": creer_question_texte_cache,
     "logo": creer_question_logo,
-    "association": creer_question_association
+    "association": creer_question_association,
+    "calcul": creer_question_calcul,
+    "completer": creer_question_completer
 }
 
 

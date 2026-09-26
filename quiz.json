@@ -89,6 +89,18 @@
                 "C": 1,
                 "D": 2
             }
+        },
+        {
+            "type": "calcul",
+            "question": "Combien font 144 ÷ 12 ?",
+            "bonne_reponse": "12"
+        },
+        {
+            "type": "completer",
+            "question": "Complète cette phrase :",
+            "avant": "Le protocole",
+            "apres": "permet d'attribuer automatiquement une adresse IP.",
+            "reponse": "DHCP"
         }
-    ]
+            ]
 }

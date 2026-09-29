@@ -12,7 +12,15 @@ from generator.elements import (
     creer_revelation
 )
 
-from generator.config import QUESTION_DURATION
+from generator.config import (
+    QUESTION_DURATION,
+    COLOR_BOX,
+    COLOR_WHITE,
+    FONT_SIZE_QUESTION,
+    FONT_SIZE_OPTION
+)
+
+from generator.text import creer_texte_adapte
 
 def creer_question_qcm(
     question,
@@ -55,16 +63,14 @@ def creer_question_qcm(
     # Question
     # --------------------------------------------------
 
-    question_clip = TextClip(
-        text=texte_question,
+    question_clip = creer_texte_adapte(
+        texte=texte_question,
         font=font,
-        font_size=65,
-        color="white",
-        size=(1600, 180),
-        method="caption",
-        text_align="center",
-        vertical_align="center",
-        duration=QUESTION_DURATION
+        largeur=1600,
+        hauteur=180,
+        taille_police=FONT_SIZE_QUESTION,
+        couleur=COLOR_WHITE,
+        taille_minimale=35
     ).with_position(
         (160, 160)
     )
@@ -90,7 +96,7 @@ def creer_question_qcm(
 
         boite = ColorClip(
             size=(700, 130),
-            color=(50, 60, 80),
+            color=COLOR_BOX,
             duration=QUESTION_DURATION
         ).with_position(
             positions[i]
@@ -99,8 +105,8 @@ def creer_question_qcm(
         texte_clip = TextClip(
             text=texte,
             font=font,
-            font_size=45,
-            color="white",
+            font_size=FONT_SIZE_OPTION,
+            color=COLOR_WHITE,
             size=(660, 100),
             method="caption",
             text_align="center",
@@ -153,8 +159,12 @@ def creer_question_qcm(
         bonne_reponse_texte
     )
 
-    return CompositeVideoClip(
+    scene = CompositeVideoClip(
         elements,
         size=(width, height)
+    ).with_duration(
+        QUESTION_DURATION
     )
+
+    return scene
 

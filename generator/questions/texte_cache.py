@@ -5,7 +5,9 @@ from moviepy import (
 
 from generator.config import (
     QUESTION_DURATION,
-    COUNTDOWN_DURATION
+    COUNTDOWN_DURATION,
+    COLOR_WHITE,
+    FONT_SIZE_QUESTION
 )
 
 from generator.elements import (
@@ -43,8 +45,8 @@ def creer_question_texte_cache(
     question_clip = TextClip(
         text=question["question"],
         font=font,
-        font_size=55,
-        color="white",
+        font_size=FONT_SIZE_QUESTION,
+        color=COLOR_WHITE,
         size=(1600, 120),
         method="caption",
         text_align="center",
@@ -60,7 +62,7 @@ def creer_question_texte_cache(
         text=texte,
         font=font,
         font_size=90,
-        color="white",
+        color=COLOR_WHITE,
         size=(1600, 180),
         method="caption",
         text_align="center",
@@ -76,7 +78,7 @@ def creer_question_texte_cache(
         text=texte.replace("_", bonne_reponse),
         font=font,
         font_size=90,
-        color="white",
+        color=COLOR_WHITE,
         size=(1600, 180),
         method="caption",
         text_align="center",

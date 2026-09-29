@@ -14,7 +14,11 @@ from generator.elements import (
     creer_revelation
 )
 
-from generator.config import QUESTION_DURATION
+from generator.config import (
+    QUESTION_DURATION,
+    COLOR_WHITE,
+    FONT_SIZE_QUESTION
+)
 
 def creer_question_image(
     question,
@@ -68,8 +72,8 @@ def creer_question_image(
     question_clip = TextClip(
         text="Quelle est cette image ?",
         font=font,
-        font_size=55,
-        color="white",
+        font_size=FONT_SIZE_QUESTION,
+        color=COLOR_WHITE,
         size=(1600, 100),
         method="caption",
         text_align="center",

@@ -3,7 +3,7 @@
     "questions": [
         {
             "type": "qcm",
-            "question": "Quel protocole attribue automatiquement une adresse IP ?",
+            "question": "Quel protocole réseau permet d'attribuer automatiquement une adresse IP à un équipement lorsqu'il se connecte à un réseau ?",
             "reponses": [
                 "DNS",
                 "DHCP",
@@ -24,6 +24,7 @@
         },
         {
             "type": "rebus",
+            "question": "De quoi s'agit t-il?",
             "images": [
                 "assets/rebus/chat.jpg",
                 "assets/rebus/pot.jpg"

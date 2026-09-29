@@ -3,7 +3,11 @@ from moviepy import (
     CompositeVideoClip
 )
 
-from generator.config import QUESTION_DURATION
+from generator.config import (
+    QUESTION_DURATION,
+    COLOR_WHITE,
+    FONT_SIZE_QUESTION
+)
 
 from generator.elements import (
     creer_fond,
@@ -41,8 +45,8 @@ def creer_question_calcul(
     question_clip = TextClip(
         text=texte_question,
         font=font,
-        font_size=75,
-        color="white",
+        font_size=FONT_SIZE_QUESTION,
+        color=COLOR_WHITE,
         size=(1600, 220),
         method="caption",
         text_align="center",

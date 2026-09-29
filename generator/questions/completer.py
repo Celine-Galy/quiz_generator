@@ -6,7 +6,10 @@ from moviepy import (
 
 from generator.config import (
     QUESTION_DURATION,
-    COUNTDOWN_DURATION
+    COUNTDOWN_DURATION,
+    COLOR_WHITE,
+    COLOR_ACCENT,
+    FONT_SIZE_QUESTION
 )
 
 from generator.elements import (
@@ -39,8 +42,8 @@ def creer_question_completer(
     question_clip = TextClip(
         text=question["question"],
         font=font,
-        font_size=55,
-        color="white",
+        font_size=FONT_SIZE_QUESTION,
+        color=COLOR_WHITE,
         size=(1600, 120),
         method="caption",
         text_align="center",
@@ -52,8 +55,8 @@ def creer_question_completer(
     texte_avant = TextClip(
         text=avant,
         font=font,
-        font_size=55,
-        color="white",
+        font_size=FONT_SIZE_QUESTION,
+        color=COLOR_WHITE,
         size=(1600, 100),
         method="caption",
         text_align="center",
@@ -64,7 +67,7 @@ def creer_question_completer(
     # Ligne représentant le mot manquant
     ligne = ColorClip(
         size=(350, 5),
-        color=(255, 255, 255),
+        color=COLOR_WHITE,
         duration=COUNTDOWN_DURATION
     ).with_position(
         (
@@ -77,8 +80,8 @@ def creer_question_completer(
     reponse_clip = TextClip(
         text=reponse,
         font=font,
-        font_size=55,
-        color=(255, 200, 50),
+        font_size=FONT_SIZE_QUESTION,
+        color=COLOR_ACCENT,
         size=(600, 80),
         method="caption",
         text_align="center",
@@ -95,8 +98,8 @@ def creer_question_completer(
     texte_apres = TextClip(
         text=apres,
         font=font,
-        font_size=55,
-        color="white",
+        font_size=FONT_SIZE_QUESTION,
+        color=COLOR_WHITE,
         size=(1600, 180),
         method="caption",
         text_align="center",

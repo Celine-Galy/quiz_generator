@@ -8,7 +8,9 @@ from moviepy import (
 
 from generator.config import (
     QUESTION_DURATION,
-    COUNTDOWN_DURATION
+    COUNTDOWN_DURATION,
+    COLOR_WHITE,
+    FONT_SIZE_QUESTION
 )
 
 from generator.elements import (
@@ -53,8 +55,8 @@ def creer_question_logo(
     question_clip = TextClip(
         text="Quel est ce logo ?",
         font=font,
-        font_size=55,
-        color="white",
+        font_size=FONT_SIZE_QUESTION,
+        color=COLOR_WHITE,
         size=(1600, 100),
         method="caption",
         text_align="center",

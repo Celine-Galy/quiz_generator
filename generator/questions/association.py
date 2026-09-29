@@ -1,4 +1,3 @@
-from math import atan2, degrees, sqrt
 from moviepy import (
     ColorClip,
     TextClip,
@@ -7,7 +6,12 @@ from moviepy import (
 
 from generator.config import (
     QUESTION_DURATION,
-    COUNTDOWN_DURATION
+    COUNTDOWN_DURATION,
+    COLOR_WHITE,
+    COLOR_BOX,
+    COLOR_REVEAL,
+    FONT_SIZE_QUESTION,
+    FONT_SIZE_OPTION
 )
 
 from generator.elements import (
@@ -46,8 +50,8 @@ def creer_question_association(
     question_clip = TextClip(
         text=question["question"],
         font=font,
-        font_size=55,
-        color="white",
+        font_size=FONT_SIZE_QUESTION,
+        color=COLOR_WHITE,
         size=(1600, 120),
         method="caption",
         text_align="center",
@@ -84,15 +88,15 @@ def creer_question_association(
 
         fond = ColorClip(
             size=(largeur, hauteur),
-            color=(50, 60, 80),
+            color=COLOR_BOX,
             duration=QUESTION_DURATION
         ).with_position((x_gauche, y))
 
         texte = TextClip(
             text=f"{chr(65 + i)}. {element}",
             font=font,
-            font_size=40,
-            color="white",
+            font_size=FONT_SIZE_OPTION,
+            color=COLOR_WHITE,
             size=(largeur - 40, hauteur - 20),
             method="caption",
             text_align="center",
@@ -111,15 +115,15 @@ def creer_question_association(
 
         fond = ColorClip(
             size=(largeur, hauteur),
-            color=(50, 60, 80),
+            color=COLOR_BOX,
             duration=QUESTION_DURATION
         ).with_position((x_droite, y))
 
         texte = TextClip(
             text=f"{i + 1}. {element}",
             font=font,
-            font_size=40,
-            color="white",
+            font_size=FONT_SIZE_OPTION,
+            color=COLOR_WHITE,
             size=(largeur - 40, hauteur - 20),
             method="caption",
             text_align="center",
@@ -148,7 +152,7 @@ def creer_question_association(
         # Fond vert à gauche
         fond_gauche = ColorClip(
             size=(largeur, hauteur),
-            color=(30, 140, 70),
+            color=COLOR_REVEAL,
             duration=QUESTION_DURATION - COUNTDOWN_DURATION
         ).with_position(
             (x_gauche, y_gauche)
@@ -157,7 +161,7 @@ def creer_question_association(
         # Fond vert à droite
         fond_droite = ColorClip(
             size=(largeur, hauteur),
-            color=(30, 140, 70),
+            color=COLOR_REVEAL,
             duration=QUESTION_DURATION - COUNTDOWN_DURATION
         ).with_position(
             (x_droite, y_droite_revelation)
@@ -170,8 +174,8 @@ def creer_question_association(
         texte_gauche = TextClip(
             text=f"{lettre}. {gauche[index_gauche]}",
             font=font,
-            font_size=40,
-            color="white",
+            font_size=FONT_SIZE_OPTION,
+            color=COLOR_WHITE,
             size=(largeur - 40, hauteur - 20),
             method="caption",
             text_align="center",
@@ -185,8 +189,8 @@ def creer_question_association(
         texte_droite = TextClip(
             text=f"{numero_droite}. {droite[index_droite]}",
             font=font,
-            font_size=40,
-            color="white",
+            font_size=FONT_SIZE_OPTION,
+            color=COLOR_WHITE,
             size=(largeur - 40, hauteur - 20),
             method="caption",
             text_align="center",

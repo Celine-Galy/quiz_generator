@@ -4,7 +4,13 @@ from moviepy import (
     CompositeVideoClip
 )
 
-from generator.config import QUESTION_DURATION, COUNTDOWN_DURATION
+from generator.config import (
+    QUESTION_DURATION,
+    COUNTDOWN_DURATION,
+    COLOR_BOX,
+    COLOR_REVEAL,
+    COLOR_WHITE
+)
 
 from generator.elements import (
     creer_fond,
@@ -38,7 +44,7 @@ def creer_question_classement(
         text=question["question"],
         font=font,
         font_size=60,
-        color="white",
+        color=COLOR_WHITE,
         size=(1600, 160),
         method="caption",
         text_align="center",
@@ -64,7 +70,7 @@ def creer_question_classement(
 
         fond = ColorClip(
             size=(700, 120),
-            color=(50, 60, 80),
+            color=COLOR_BOX,
             duration=COUNTDOWN_DURATION
         ).with_position(
             positions[i]
@@ -74,7 +80,7 @@ def creer_question_classement(
             text=f"{chr(65 + i)}. {element}",
             font=font,
             font_size=42,
-            color="white",
+            color=COLOR_WHITE,
             size=(660, 90),
             method="caption",
             text_align="center",
@@ -112,7 +118,7 @@ def creer_question_classement(
 
         fond = ColorClip(
             size=(largeur, hauteur_ligne - 5),
-            color=(30, 140, 70),
+            color=COLOR_REVEAL,
             duration=QUESTION_DURATION - COUNTDOWN_DURATION
         ).with_position(
             (classement_x, y)
@@ -124,7 +130,7 @@ def creer_question_classement(
             text=f"{position}. {elements_question[index]}",
             font=font,
             font_size=40,
-            color="white",
+            color=COLOR_WHITE,
             size=(largeur - 40, hauteur_ligne - 25),
             method="caption",
             text_align="center",

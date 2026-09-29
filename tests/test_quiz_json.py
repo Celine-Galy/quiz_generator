@@ -54,7 +54,7 @@ def test_champs_obligatoires_par_type():
         "qcm": ["question", "reponses", "bonne_reponse"],
         "vrai_faux": ["question", "bonne_reponse"],
         "image": ["image", "bonne_reponse"],
-        "rebus": ["images", "bonne_reponse"],
+        "rebus": ["question", "images", "bonne_reponse"],
         "intrus": ["question", "elements", "intrus"],
         "classement": ["question", "elements", "ordre_correct"],
         "texte_cache": ["question", "texte", "bonne_reponse"],

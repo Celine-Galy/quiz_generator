@@ -5,7 +5,11 @@ from generator.config import (
     COUNTDOWN_DURATION,
     COLOR_BACKGROUND,
     COLOR_REVEAL,
-    COLOR_WHITE
+    COLOR_WHITE,
+    FONT_SIZE_TITLE,
+    FONT_SIZE_NUMBER,
+    FONT_SIZE_REVEAL,
+    FONT_SIZE_COUNTDOWN
 )
 
 def creer_fond(width, height):
@@ -20,7 +24,7 @@ def creer_titre(titre, width, font):
     return TextClip(
         text=titre,
         font=font,
-        font_size=45,
+        font_size=FONT_SIZE_TITLE,
         color=COLOR_WHITE,
         size=(width, 70),
         method="caption",
@@ -34,7 +38,7 @@ def creer_numero(numero, font):
     return TextClip(
         text=f"Question {numero}",
         font=font,
-        font_size=40,
+        font_size=FONT_SIZE_NUMBER,
         color=COLOR_WHITE,
         size=(400, 60),
         method="caption",
@@ -52,7 +56,7 @@ def creer_compte_a_rebours(font):
         compteur = TextClip(
             text=str(chiffre),
             font=font,
-            font_size=70,
+            font_size=FONT_SIZE_COUNTDOWN,
             color=COLOR_WHITE,
             size=(150, 100),
             method="caption",
@@ -91,7 +95,7 @@ def creer_revelation(
     texte_clip = TextClip(
         text=texte,
         font=font,
-        font_size=45,
+        font_size=FONT_SIZE_REVEAL,
         color=COLOR_WHITE,
         size=(largeur - 40, hauteur - 40),
         method="caption",
@@ -135,7 +139,7 @@ def creer_revelation_liste(
         texte = TextClip(
             text=element,
             font=font,
-            font_size=40,
+            font_size=FONT_SIZE_OPTION,
             color=COLOR_WHITE,
             size=(largeur - 40, hauteur_element - 30),
             method="caption",

@@ -4,7 +4,13 @@ from moviepy import (
     CompositeVideoClip
 )
 
-from generator.config import QUESTION_DURATION
+from generator.config import (
+    QUESTION_DURATION,
+    COLOR_BOX,
+    COLOR_WHITE,
+    FONT_SIZE_QUESTION,
+    FONT_SIZE_OPTION
+)
 
 from generator.elements import (
     creer_fond,
@@ -34,8 +40,8 @@ def creer_question_intrus(
     question_clip = TextClip(
         text=question["question"],
         font=font,
-        font_size=65,
-        color="white",
+        font_size=FONT_SIZE_QUESTION,
+        color=COLOR_WHITE,
         size=(1600, 180),
         method="caption",
         text_align="center",
@@ -56,15 +62,15 @@ def creer_question_intrus(
 
         boite = ColorClip(
             size=(700, 130),
-            color=(50, 60, 80),
+            color=COLOR_BOX,
             duration=QUESTION_DURATION
         ).with_position(positions[i])
 
         texte_clip = TextClip(
             text=f"{chr(65 + i)}. {element}",
             font=font,
-            font_size=45,
-            color="white",
+            font_size=FONT_SIZE_OPTION,
+            color=COLOR_WHITE,
             size=(660, 100),
             method="caption",
             text_align="center",

@@ -12,7 +12,13 @@ from generator.elements import (
     creer_revelation
 )
 
-from generator.config import QUESTION_DURATION
+from generator.config import (
+    QUESTION_DURATION,
+    COLOR_BOX,
+    COLOR_WHITE,
+    FONT_SIZE_QUESTION,
+    FONT_SIZE_OPTION
+)
 
 def creer_question_vrai_faux(
     question,
@@ -57,8 +63,8 @@ def creer_question_vrai_faux(
     question_clip = TextClip(
         text=texte_question,
         font=font,
-        font_size=65,
-        color="white",
+        font_size=FONT_SIZE_QUESTION,
+        color=COLOR_WHITE,
         size=(1600, 220),
         method="caption",
         text_align="center",
@@ -88,7 +94,7 @@ def creer_question_vrai_faux(
 
         boite = ColorClip(
             size=(600, 160),
-            color=(50, 60, 80),
+            color=COLOR_BOX,
             duration=QUESTION_DURATION
         ).with_position(
             positions[i]
@@ -97,8 +103,8 @@ def creer_question_vrai_faux(
         texte_clip = TextClip(
             text=reponse,
             font=font,
-            font_size=50,
-            color="white",
+            font_size=FONT_SIZE_OPTION,
+            color=COLOR_WHITE,
             size=(560, 120),
             method="caption",
             text_align="center",

@@ -14,6 +14,7 @@ from generator.questions.calcul import creer_question_calcul
 from generator.questions.completer import creer_question_completer
 
 from generator.video import assembler_scenes
+
 from generator.config import (
     WIDTH,
     HEIGHT,
@@ -22,8 +23,7 @@ from generator.config import (
     OUTPUT_FILE
 )
 
-# Association entre le type de question
-# et la fonction qui permet de créer la scène
+
 GENERATEURS = {
     "qcm": creer_question_qcm,
     "vrai_faux": creer_question_vrai_faux,
@@ -39,63 +39,56 @@ GENERATEURS = {
 }
 
 
-# Chargement du quiz
-with open("quiz.json", "r", encoding="utf-8") as fichier:
-    quiz = json.load(fichier)
+def generer_quiz():
 
+    with open("quiz.json", "r", encoding="utf-8") as fichier:
+        quiz = json.load(fichier)
 
-scenes = []
+    scenes = []
 
+    for numero, question in enumerate(
+        quiz["questions"],
+        start=1
+    ):
+        print(f"Création de la question {numero}...")
 
-# Création des scènes
-for numero, question in enumerate(
-    quiz["questions"],
-    start=1
-):
+        type_question = question["type"]
 
-    print(f"Création de la question {numero}...")
+        if type_question not in GENERATEURS:
+            print(
+                f"Type de question non pris en charge : "
+                f"{type_question}"
+            )
+            continue
 
-    type_question = question["type"]
+        generateur = GENERATEURS[type_question]
 
-    if type_question not in GENERATEURS:
-        print(
-            f"Type de question non pris en charge : "
-            f"{type_question}"
+        scene = generateur(
+            question,
+            quiz["titre"],
+            numero,
+            WIDTH,
+            HEIGHT,
+            FONT
         )
-        continue
 
-    generateur = GENERATEURS[type_question]
+        scenes.append(scene)
 
-    scene = generateur(
-        question,
-        quiz["titre"],
-        numero,
-        WIDTH,
-        HEIGHT,
-        FONT
+    print(f"{len(scenes)} scène(s) créée(s).")
+
+    video = assembler_scenes(scenes)
+
+    os.makedirs("output", exist_ok=True)
+
+    video.write_videofile(
+        OUTPUT_FILE,
+        fps=FPS,
+        codec="libx264",
+        audio=False
     )
 
-    scenes.append(scene)
+    print(f"Vidéo créée : {OUTPUT_FILE}")
 
 
-print(f"{len(scenes)} scène(s) créée(s).")
-
-
-# Assemblage des scènes
-video = assembler_scenes(scenes)
-
-
-# Création du dossier de sortie
-os.makedirs("output", exist_ok=True)
-
-
-# Génération de la vidéo
-video.write_videofile(
-    OUTPUT_FILE,
-    fps=FPS,
-    codec="libx264",
-    audio=False
-)
-
-
-print(f"Vidéo créée : {OUTPUT_FILE}")
+if __name__ == "__main__":
+    generer_quiz()

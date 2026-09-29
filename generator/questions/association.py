@@ -1,3 +1,4 @@
+from math import atan2, degrees, sqrt
 from moviepy import (
     ColorClip,
     TextClip,
@@ -142,6 +143,7 @@ def creer_question_association(
 
         y_gauche = y_depart + index_gauche * espace
         y_droite = y_depart + index_droite * espace
+        y_droite_revelation = y_gauche
 
         # Fond vert à gauche
         fond_gauche = ColorClip(
@@ -158,7 +160,7 @@ def creer_question_association(
             color=(30, 140, 70),
             duration=QUESTION_DURATION - COUNTDOWN_DURATION
         ).with_position(
-            (x_droite, y_droite)
+            (x_droite, y_droite_revelation)
         ).with_start(COUNTDOWN_DURATION)
 
         elements.append(fond_gauche)
@@ -191,25 +193,11 @@ def creer_question_association(
             vertical_align="center",
             duration=QUESTION_DURATION - COUNTDOWN_DURATION
         ).with_position(
-            (x_droite + 20, y_droite + 10)
+            (x_droite + 20, y_droite_revelation + 10)
         ).with_start(COUNTDOWN_DURATION)
 
         elements.append(texte_gauche)
         elements.append(texte_droite)
-
-        # Ligne de liaison
-        ligne = ColorClip(
-            size=(460, 8),
-            color=(30, 140, 70),
-            duration=QUESTION_DURATION - COUNTDOWN_DURATION
-        ).with_position(
-            (
-                x_gauche + largeur,
-                y_gauche + hauteur // 2
-            )
-        ).with_start(COUNTDOWN_DURATION)
-
-        elements.append(ligne)
 
     elements.extend(compteurs)
 

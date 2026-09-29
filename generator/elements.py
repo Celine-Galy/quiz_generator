@@ -2,13 +2,16 @@
 from moviepy import ColorClip, TextClip
 from generator.config import (
     QUESTION_DURATION,
-    COUNTDOWN_DURATION
+    COUNTDOWN_DURATION,
+    COLOR_BACKGROUND,
+    COLOR_REVEAL,
+    COLOR_WHITE
 )
 
 def creer_fond(width, height):
     return ColorClip(
         size=(width, height),
-        color=(25, 30, 45),
+        color=COLOR_BACKGROUND,
         duration=QUESTION_DURATION
     )
 
@@ -18,7 +21,7 @@ def creer_titre(titre, width, font):
         text=titre,
         font=font,
         font_size=45,
-        color="white",
+        color=COLOR_WHITE,
         size=(width, 70),
         method="caption",
         text_align="center",
@@ -32,7 +35,7 @@ def creer_numero(numero, font):
         text=f"Question {numero}",
         font=font,
         font_size=40,
-        color="white",
+        color=COLOR_WHITE,
         size=(400, 60),
         method="caption",
         text_align="center",
@@ -50,7 +53,7 @@ def creer_compte_a_rebours(font):
             text=str(chiffre),
             font=font,
             font_size=70,
-            color="white",
+            color=COLOR_WHITE,
             size=(150, 100),
             method="caption",
             text_align="center",
@@ -77,7 +80,7 @@ def creer_revelation(
 
     fond = ColorClip(
         size=(largeur, hauteur),
-        color=(30, 140, 70),
+        color=COLOR_REVEAL,
         duration=QUESTION_DURATION - COUNTDOWN_DURATION
     ).with_position(
         position
@@ -89,7 +92,7 @@ def creer_revelation(
         text=texte,
         font=font,
         font_size=45,
-        color="white",
+        color=COLOR_WHITE,
         size=(largeur - 40, hauteur - 40),
         method="caption",
         text_align="center",
@@ -123,7 +126,7 @@ def creer_revelation_liste(
 
         fond = ColorClip(
             size=(largeur, hauteur_element - 10),
-            color=(30, 140, 70),
+            color=COLOR_REVEAL,
             duration=QUESTION_DURATION - COUNTDOWN_DURATION
         ).with_position(
             (position[0], y)
@@ -133,7 +136,7 @@ def creer_revelation_liste(
             text=element,
             font=font,
             font_size=40,
-            color="white",
+            color=COLOR_WHITE,
             size=(largeur - 40, hauteur_element - 30),
             method="caption",
             text_align="center",
